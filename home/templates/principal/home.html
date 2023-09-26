@@ -1,0 +1,14 @@
+{% extends "principal/base.html" %}
+
+{% block conteudo %}
+    <title>Home - Baú do Mestre</title>
+
+    <h1>Seja bem vindo ao Baú do Mestre!</h1>
+    {% if user.is_authenticated %}
+    <a href="{% url 'buscarmesa' %}">Descubra campanhas incríveis</a> <br> <br>
+    {% else %}
+    <a href="{% url 'mural' %}">Descubra campanhas incríveis</a> <br> <br>
+    {% endif %}
+    <a href="{% url 'account_signup' %}">Comece sua jornada</a> <br> <br>
+    
+{% endblock conteudo %}

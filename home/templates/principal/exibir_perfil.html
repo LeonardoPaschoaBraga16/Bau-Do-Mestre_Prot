@@ -1,0 +1,16 @@
+{% extends "principal/base.html" %}
+
+{% block conteudo %}
+
+    <title>{{ perfil.nomePerfil.username }} - Baú do Mestre</title>
+
+    <img src="{{ perfil.fotoConta.url }}" alt="Foto de usuário {{ perfil.nomePerfil.username }}" width="350" height="250">
+    <h1>{{ perfil.nomePerfil.username }}</h1>
+    <p>{{ perfil.sistema_rpg }}</p>
+    <p>{{ perfil.tipo_player }}</p>
+    <p>{{ perfil.tipo_sessao }}</p>
+    <p>{{ perfil.descricao }}</p>
+    
+    <a href='{% url 'index' %}'>Voltar a tela inicial</a>
+
+{% endblock conteudo %}

@@ -1,0 +1,834 @@
+{% load static %}
+
+<form method="post">
+    {% csrf_token %}
+
+    <!-- Box inicial dos dados do personagem -->
+<div class="sheet_header">
+    {{ dnd.nome.label_tag }}
+    {{ dnd.nome }}
+
+    {{ dnd.classe.label_tag }}
+    {{ dnd.classe }}
+
+    {{ dnd.sub_classe.label_tag }}
+    {{ dnd.sub_classe }}
+
+    {{ dnd.nivel.label_tag }}
+    {{ dnd.nivel }}
+
+    {{ dnd.raca.label_tag }}
+    {{ dnd.raca }}
+
+    {{ dnd.sub_raca.label_tag }}
+    {{ dnd.sub_raca }}
+
+    {{ dnd.xp.label_tag }}
+    {{ dnd.xp }}
+
+</div>
+
+<br>
+
+<!-- Box de atributos -->
+<div class="atributos_box">
+    <div class="atributo">
+        <label>FORÇA</label>
+        {{ dnd.forca }}
+        <label id="mod_forca">0</label>
+    </div>
+
+    <div class="atributo">
+        <label>DEXTREZA</label>
+        {{ dnd.dex }}
+        <label id="mod_dex">0</label>
+    </div>
+
+    <div class="atributo">
+        <label>CONSTITUIÇÃO</label>
+        {{ dnd.const }}
+        <label id="mod_const">0</label>
+    </div>
+
+    <div class="atributo">
+        <label>INTELIGÊNCIA</label>
+        {{ dnd.int }}
+        <label id="mod_int">0</label>
+    </div>
+
+    <div class="atributo">
+        <label>SABEDORIA</label>
+        {{ dnd.sab }}
+        <label id="mod_sab">0</label>
+    </div>
+
+    <div class="atributo">
+        <label>CARISMA</label>
+        {{ dnd.carisma }}
+        <label id="mod_car">0</label>
+    </div>
+</div>
+
+
+<br>
+
+{{ dnd.inspiracao }}
+<label>Inspiração</label>
+
+<label id="bonusProf">0</label>
+<label>Bônus de proficiência</label>
+
+
+<!-- Saving Throws -->
+<div class="salvaguarda_box">
+    {{ dnd.forcaSalvaguarda }}
+    <label id="salva_for">0</label>
+    <label>Força</label>
+
+    {{ dnd.dexSalvaguarda }}
+    <label id="salva_dex">0</label>
+    <label>Dextreza</label>
+
+    {{ dnd.constSalvaguarda }}
+    <label id="salva_const">0</label>
+    <label>Constituição</label>
+
+    {{ dnd.intSalvaguarda }}
+    <label id="salva_int">0</label>
+    <label>Inteligência</label>
+
+    {{ dnd.sabSalvaguarda }}
+    <label id="salva_sab">0</label>
+    <label>Sabedoria</label>
+
+    {{ dnd.carismaSalvaguarda }}
+    <label id="salva_car">0</label>
+    <label>Carisma</label>
+
+</div>
+
+<br>
+
+
+<!-- Perícias -->
+<div class="pericias">
+
+    <div class="pericia">
+        {{ dnd.acrobacia }}
+        <label id="mod_acrobacia">0</label>
+        <label>Acrobacia(Dex)</label>
+    </div>
+    
+
+    <div class="pericia">
+        {{ dnd.adestrarAnimais }}
+        <label id="mod_adestrarAnimais">0</label>
+        <label>Adestrar Animais(Sab)</label>
+    </div>
+
+    <div class="pericia">
+        {{ dnd.arcana }}
+        <label id="mod_arcana">0</label>
+        <label>Arcana(Int)</label>
+    </div>
+
+    <div class="pericia">
+        {{ dnd.atletismo }}
+        <label id="mod_atletismo">0</label>
+        <label>Atletismo(For)</label>
+    </div>
+
+    <div class="pericia">
+        {{ dnd.enganacao }}
+        <label id="mod_enganacao">0</label>
+        <label>Enganação(Car)</label>
+    </div>
+
+    <div class="pericia">
+        {{ dnd.historia }}
+        <label id="mod_historia">0</label>
+        <label>Historia(Int)</label>
+    </div>
+
+    <div class="pericia">
+        {{ dnd.intuicao }}
+        <label id="mod_intuicao">0</label>
+        <label>Intuição(Sab)</label>
+    </div>
+
+    <div class="pericia">
+        {{ dnd.intimidacao }}
+        <label id="mod_intimidacao">0</label>
+        <label>Intimidação(Car)</label>
+    </div>
+
+    <div class="pericia">
+        {{ dnd.investigacao }}
+        <label id="mod_investigacao">0</label>
+        <label>Investigação(Int)</label>
+    </div>
+
+    <div class="pericia">
+        {{ dnd.medicina }}
+        <label id="mod_medicina">0</label>
+        <label>Medicina(Sab)</label>
+    </div>
+
+
+    <div class="pericia">
+        {{ dnd.natureza }}
+        <label id="mod_natruza">0</label>
+        <label>Natureza(Int)</label>
+    </div>
+
+    <div class="pericia">
+        {{ dnd.percepcao }}
+        <label id="mod_percepcao">0</label>
+        <label>Percepção(Sab)</label>
+    </div>
+
+    <div class="pericia">
+        {{ dnd.atuacao }}
+        <label id="mod_atuacao">0</label>
+        <label>Atuação(Car)</label>
+    </div>
+    
+
+    <div class="pericia">
+        {{ dnd.persuasao }}
+        <label id="mod_persuasao">0</label>
+        <label>Persuasão(Car)</label>
+    </div>
+
+    <div class="pericia">
+        {{ dnd.religiao }}
+        <label id="mod_religiao">0</label>
+        <label>Religião(Int)</label>
+    </div>
+
+    <div class="pericia">
+        {{ dnd.prestigitacao }}
+        <label id="mod_prestigitacao">0</label>
+        <label>Prestigitação(Dex)</label>
+    </div>
+
+    <div class="pericia">
+        {{ dnd.furtividade }}
+        <label id="mod_furtividade">0</label>
+        <label>Furtividade(Dex)</label>
+    </div>
+
+    <div class="pericia">
+        {{ dnd.sobrevivencia }}
+        <label id="mod_sobrevivencia">0</label>
+        <label>Sobrevivência(Sab)</label>
+    </div>
+
+</div>
+
+<div class="profecienciasFerramentas">
+    <label>Proficiencia com ferramentas e Habilidades Customizadas</label>
+    {{ dnd.proficienciasFerramentas }}
+</div>
+
+<div class="outrasProf_Linguagens">
+    <label>Outras Proficiências e Linguagens</label>
+    {{ dnd.outrasProf_Linguagens }}
+</div>
+
+<br>
+
+<!-- Meio -->
+<div class="coluna_meio">
+    {{ dnd.ca }}
+    <label>Classe de Armadura</label>
+    
+    <label id="iniciativa">0</label>
+    <label>Iniciativa</label>
+
+    {{ dnd.movi }}
+    <label>Movimentação</label>
+
+    <br>
+
+    {{ dnd.vida.label_tag }}
+    {{ dnd.vida }}
+
+    {{ dnd.vidaTemp }}
+    <label>Vida Temporária</label>
+
+    <label>Total</label>
+    {{ dnd.hitDice }}
+    <select id=" {{ dnd.hitDiceType.id_for_label }}" name="{{ dnd.hitDiceType.name }}">
+        {% for value, label in dnd.hitDiceType.field.choices %}
+            <option value="{{ value }}" {% if dnd.hitDiceType.value == value %}selected{% endif %}>{{ label }}</option>>
+        {% endfor %}
+    </select>
+
+    <div class="death_saving">
+        <label>Sucesso</label>
+        {{ dnd.deathSucess1 }}
+        {{ dnd.deathSucess2 }}
+        {{ dnd.deathSucess3 }}
+        <br>
+        <label>Falha</label>
+        {{ dnd.deathFailure1 }}
+        {{ dnd.deathFailure2 }}
+        {{ dnd.deathFailure3 }}
+    </div>
+
+</div>
+
+
+<div class="ataques_box">
+    <table>
+        <tr>
+            <td>Ataque</td>
+            <td>Bônus</td>
+            <td>Dano/Tipo</td>
+        </tr>
+        <tr>
+            <td>{{ dnd.nomeAtk1 }}</td>
+            <td>{{ dnd.bonusAtk1 }}</td>
+            <td>{{ dnd.danoTipoAtk1 }}</td>
+        </tr>
+        <tr>
+            <td>{{ dnd.nomeAtk2 }}</td>
+            <td>{{ dnd.bonusAtk2 }}</td>
+            <td>{{ dnd.danoTipoAtk2 }}</td>
+        </tr>
+        <tr>
+            <td>{{ dnd.nomeAtk3 }}</td>
+            <td>{{ dnd.bonusAtk3 }}</td>
+            <td>{{ dnd.danoTipoAtk3}}</td>
+        </tr>
+        <tr>
+            <td>{{ dnd.nomeAtk4 }}</td>
+            <td>{{ dnd.bonusAtk4 }}</td>
+            <td>{{ dnd.danoTipoAtk4}}</td>
+        </tr>
+        <tr>
+            <td>{{ dnd.nomeAtk5 }}</td>
+            <td>{{ dnd.bonusAtk5 }}</td>
+            <td>{{ dnd.danoTipoAtk5}}</td>
+        </tr>
+    </table>
+    
+</div>
+<br>
+<div class="Dinheiro">
+    <label>PC</label>
+    {{ dnd.pc }}
+
+    <label>PP</label>
+    {{ dnd.pp }}
+
+    <label>PE</label>
+    {{ dnd.pe }}
+
+    <label>PO</label>
+    {{ dnd.po }}
+
+    <label>PL</label>
+    {{ dnd.pl }}
+</div>
+
+
+<div class="inventario_box">
+    <label>Inventário</label>
+    {{ dnd.inventario }}
+</div>
+<br>
+
+<div class="caracteristicas">
+    <label>Características</label>
+    {{ dnd.personalidade }}
+    <label>Personalidade</label>
+
+    {{ dnd.ideias }}
+    <label>Ideais</label>
+
+    {{ dnd.vinculos }}
+    <label>Vínculos</label>
+
+    {{ dnd.fraquezas }}
+    <label>Fraquezas</label>
+
+</div>
+
+<div class="caracteristicas">
+    {{ dnd.caracteristicas }}
+    <label> Características & Talentos </label>
+</div>
+
+<div class="magias">
+    <label>Modificador de habilidade</label>
+    {{ dnd.spellCasting }}
+
+    <label>Modificador de Dificuldade</label>
+    {{ dnd.spellDC }}
+
+    <label>Ataque Bonus</label>
+    {{ dnd.spellAttackBonus }}
+
+    <br>
+
+    <label>1</label>
+    Max{{ dnd.circulo1QteMax }}
+    Atual{{ dnd.circulo1Qte }}
+    {{ dnd.circulo1 }}
+
+    <label>2</label>
+    Max{{ dnd.circulo2QteMax }}
+    Atual{{ dnd.circulo2Qte }}
+    {{ dnd.circulo2 }}
+
+    <label>3</label>
+    Max{{ dnd.circulo3QteMax }}
+    Atual{{ dnd.circulo3Qte }}
+    {{ dnd.circulo3 }}
+
+    <label>4</label>
+    Max{{ dnd.circulo4QteMax }}
+    Atual{{ dnd.circulo4Qte }}
+    {{ dnd.circulo4 }}
+
+    <label>5</label>
+    Max{{ dnd.circulo5QteMax }}
+    Atual{{ dnd.circulo5Qte }}
+    {{ dnd.circulo5 }}
+
+    <label>6</label>
+    Max{{ dnd.circulo6QteMax }}
+    Atual{{ dnd.circulo6Qte }}
+    {{ dnd.circulo6 }}
+
+    <label>7</label>
+    Max{{ dnd.circulo7QteMax }}
+    Atual{{ dnd.circulo7Qte }}
+    {{ dnd.circulo7 }}
+
+    <label>8</label>
+    Max{{ dnd.circulo8QteMax }}
+    Atual{{ dnd.circulo8Qte }}
+    {{ dnd.circulo8 }}
+
+    <label>9</label>
+    Max{{ dnd.circulo9QteMax }}
+    Atual{{ dnd.circulo9Qte }}
+    {{ dnd.circulo9 }}
+
+</div>
+
+<button type="submit">Salvar</button>
+</form>
+
+<script>
+    var bonusProficiencia = 0;
+    var modForca = 0;
+    var modDex = 0;
+    var modConst = 0;
+    var modInt = 0;
+    var modSab = 0;
+    var modCar = 0;
+
+        //Bonus Proficiencia
+    const nivel = document.getElementById('id_nivel');
+    const bonusProf = document.getElementById('bonusProf');
+
+    nivel.addEventListener('input', function() {
+    
+       const valorNivel = parseInt(nivel.value);
+       bonusProf.textContent = valorNivel;
+
+        bonusProficiencia = Math.floor(2+((valorNivel - 1) /4));
+
+        if(valorNivel != null && !isNaN(valorNivel)) {
+            bonusProf.textContent = bonusProficiencia;
+            calcularSalvaguardas();
+            calcularProficiencias()
+        } else {
+            bonusProf.textContent = 0;
+            bonusProficiencia = 0;
+        }
+        
+
+    });
+
+    //Calculando mods
+    const forca = document.getElementById('id_forca');
+    const forcaMod = document.getElementById('mod_forca');
+
+    forca.addEventListener('input', function() {
+    
+    const valorForca = parseInt(forca.value);
+
+    
+     modForca = Math.floor((valorForca - 10) / 2);
+
+
+     if(valorForca != null && !isNaN(valorForca)) {
+        forcaMod.textContent = modForca;
+        calcularSalvaguardas();
+        calcularProficiencias()
+     } else {
+        forcaMod.textContent = 0;
+        modForca = 0;
+     }
+    });
+
+    const dex = document.getElementById('id_dex');
+    const dexMod = document.getElementById('mod_dex');
+
+    dex.addEventListener('input', function() {
+    
+    const valorDex = parseInt(dex.value);
+
+    
+     modDex = Math.floor((valorDex - 10) / 2);
+
+
+     if(valorDex != null && !isNaN(valorDex)) {
+        dexMod.textContent = modDex;
+        const iniciativa = document.getElementById('iniciativa');
+        iniciativa.textContent = modDex;
+        calcularSalvaguardas();
+        calcularProficiencias()
+     } else {
+        dexMod.textContent = 0;
+        modDex = 0;
+     }
+    });
+
+    const cons = document.getElementById('id_const');
+    const constMod = document.getElementById('mod_const');
+
+    cons.addEventListener('input', function() {
+    
+    const valorConst = parseInt(cons.value);
+
+    
+    modConst = Math.floor((valorConst - 10) / 2);
+
+
+     if(valorConst != null && !isNaN(valorConst)) {
+        constMod.textContent = modConst;
+        calcularSalvaguardas();
+        calcularProficiencias()
+     } else {
+        constMod.textContent = 0;
+        modConst = 0;
+     }
+    });
+
+    const inte = document.getElementById('id_int');
+    const intMod = document.getElementById('mod_int');
+
+    inte.addEventListener('input', function() {
+    
+    const valorInt = parseInt(inte.value);
+
+    
+     modInt = Math.floor((valorInt - 10) / 2);
+
+
+     if(valorInt != null && !isNaN(valorInt)) {
+        intMod.textContent = modInt;
+        calcularSalvaguardas();
+        calcularProficiencias()
+     } else {
+        intMod.textContent = 0;
+        modInt = 0;
+     }
+    });
+
+
+    const sab = document.getElementById('id_sab');
+    const sabMod = document.getElementById('mod_sab');
+
+    sab.addEventListener('input', function() {
+    
+    const valorSab = parseInt(sab.value);
+
+    
+     modSab = Math.floor((valorSab - 10) / 2);
+
+
+     if(valorSab != null && !isNaN(valorSab)) {
+        sabMod.textContent = modSab;
+        calcularSalvaguardas();
+        calcularProficiencias()
+     } else {
+        sabMod.textContent = 0;
+        modSab = 0
+     }
+    });
+
+    const car = document.getElementById('id_carisma');
+    const carMod = document.getElementById('mod_car');
+
+    car.addEventListener('input', function() {
+    
+    const valorCar = parseInt(car.value);
+
+    
+     modCar = Math.floor((valorCar - 10) / 2);
+
+
+     if(valorCar != null && !isNaN(valorCar)) {
+        carMod.textContent = modCar;
+        calcularSalvaguardas();
+        calcularProficiencias()
+     } else {
+        carMod.textContent = 0;
+        modCar = 0;
+     }
+    });
+
+
+
+    const checkFor = document.getElementById('id_forcaSalvaguarda');
+    const checkDex = document.getElementById('id_dexSalvaguarda');
+    const checkConst = document.getElementById('id_constSalvaguarda');
+    const checkInt = document.getElementById('id_intSalvaguarda');
+    const checkSab = document.getElementById('id_sabSalvaguarda');
+    const checkCar = document.getElementById('id_carismaSalvaguarda');
+
+
+    function calcularSalvaguardas(){
+        
+        const modSalvaFor = document.getElementById('salva_for');
+        const modSalvaDex = document.getElementById('salva_dex');
+        const modSalvaConst = document.getElementById('salva_const');
+        const modSalvaInt = document.getElementById('salva_int');
+        const modSalvaSab = document.getElementById('salva_sab');
+        const modSalvaCar = document.getElementById('salva_car');
+
+
+        //Força
+        if(checkFor.checked){
+            modSalvaFor.textContent = modForca + bonusProficiencia;
+        } else {
+            modSalvaFor.textContent = modForca;
+        }
+
+        //Destreza
+        if(checkDex.checked){
+            modSalvaDex.textContent = modDex + bonusProficiencia;
+        } else {
+            modSalvaDex.textContent = modDex;
+        }
+
+        //Constituição
+        if(checkConst.checked){
+            modSalvaConst.textContent = modConst + bonusProficiencia;
+        } else {
+            modSalvaConst.textContent = modConst;
+        }
+
+        //Inteligência
+        if(checkInt.checked){
+            modSalvaInt.textContent = modInt + bonusProficiencia;
+        } else {
+            modSalvaInt.textContent = modInt;
+        }
+
+        //Sabedoria
+        if(checkSab.checked){
+            modSalvaSab.textContent = modSab + bonusProficiencia;
+        } else {
+            modSalvaSab.textContent = modSab;
+        }
+
+        //Carisma
+        if(checkCar.checked){
+            modSalvaCar.textContent = modCar + bonusProficiencia;
+        } else {
+            modSalvaCar.textContent = modCar;
+        }
+    }
+
+
+    const acrobacia = document.getElementById('id_acrobacia');
+    const adestrarAnimais = document.getElementById('id_adestrarAnimais');
+    const arcana = document.getElementById('id_arcana');
+    const atletismo = document.getElementById('id_atletismo');
+    const enganacao = document.getElementById('id_enganacao');
+    const historia = document.getElementById('id_historia');
+    const intuicao = document.getElementById('id_intuicao');
+    const intimidacao = document.getElementById('id_intimidacao');
+    const investigacao = document.getElementById('id_investigacao');
+    const medicina = document.getElementById('id_medicina');
+    const natureza = document.getElementById('id_natureza');
+    const percepcao = document.getElementById('id_percepcao');
+    const atuacao = document.getElementById('id_atuacao');
+    const persuasao = document.getElementById('id_persuasao');
+    const religiao = document.getElementById('id_religiao');
+    const prestigitacao = document.getElementById('id_prestigitacao');
+    const furtividade = document.getElementById('id_furtividade');
+    const sobrevivencia = document.getElementById('id_sobrevivencia');
+
+
+    function calcularProficiencias(){
+        const modAcrobacia = document.getElementById('mod_acrobacia');
+        const modAdestrarAnimais = document.getElementById('mod_adestrarAnimais');
+        const modArcana = document.getElementById('mod_arcana');
+        const modAtletismo = document.getElementById('mod_atletismo');
+        const modEnganacao = document.getElementById('mod_enganacao');
+        const modHistoria = document.getElementById('mod_historia');
+        const modIntuicao = document.getElementById('mod_intuicao');
+        const modIntimidacao = document.getElementById('mod_intimidacao');
+        const modInvestigacao = document.getElementById('mod_investigacao');
+        const modMedicina = document.getElementById('mod_medicina');
+        const modNatureza = document.getElementById('mod_natruza');
+        const modPercepcao = document.getElementById('mod_percepcao');
+        const modAtuacao = document.getElementById('mod_atuacao');
+        const modPersuasao = document.getElementById('mod_persuasao');
+        const modReligiao = document.getElementById('mod_religiao');
+        const modPrestigitacao = document.getElementById('mod_prestigitacao');
+        const modFurtividade = document.getElementById('mod_furtividade');
+        const modSobrevivencia = document.getElementById('mod_sobrevivencia');
+
+
+        //Acrobacia
+        if(acrobacia.checked){
+            modAcrobacia.textContent = modDex + bonusProficiencia;
+        } else {
+            modAcrobacia.textContent = modDex;
+        }
+        //Adestrar Animais
+        if(adestrarAnimais.checked){
+            modAdestrarAnimais.textContent = modSab + bonusProficiencia;
+        } else {
+            modAdestrarAnimais.textContent = modSab;
+        }
+        // Arcana
+        if(arcana.checked){
+            modArcana.textContent = modInt + bonusProficiencia;
+        } else {
+            modArcana.textContent = modInt;
+        }
+        //Atletismo
+        if(atletismo.checked){
+            modAtletismo.textContent = modForca + bonusProficiencia;
+        } else {
+            modAtletismo.textContent = modForca;
+        }
+        //Enganação
+        if(enganacao.checked){
+            modEnganacao.textContent = modCar + bonusProficiencia;
+        } else {
+            modEnganacao.textContent = modCar;
+        }
+        //Historia
+        if(historia.checked){
+            modHistoria.textContent = modInt + bonusProficiencia;
+        } else {
+            modHistoria.textContent = modInt;
+        }
+        //Intuição
+        if(intuicao.checked){
+            modIntuicao.textContent = modSab + bonusProficiencia;
+        } else {
+            modIntuicao.textContent = modSab;
+        }
+        //Intimidação
+        if(intimidacao.checked){
+            modIntimidacao.textContent = modCar + bonusProficiencia;
+        } else {
+            modIntimidacao.textContent = modCar;
+        }
+        //Investigação
+        if(investigacao.checked){
+            modInvestigacao.textContent = modInt + bonusProficiencia;
+        } else {
+            modInvestigacao.textContent = modInt;
+        }
+        //Medicina
+        if(medicina.checked){
+            modMedicina.textContent = modSab + bonusProficiencia;
+        } else {
+            modMedicina.textContent = modSab;
+        }
+        //Natureza
+        if(natureza.checked){
+            modNatureza.textContent = modInt + bonusProficiencia;
+        } else {
+            modNatureza.textContent = modInt;
+        }
+        //Percepção
+        if(percepcao.checked){
+            modPercepcao.textContent = modSab + bonusProficiencia;
+        } else {
+            modPercepcao.textContent = modSab;
+        }
+        //Atuação
+        if(atuacao.checked){
+            modAtuacao.textContent = modCar + bonusProficiencia;
+        } else {
+            modAtuacao.textContent = modCar;
+        }
+        //Persuasão
+        if(persuasao.checked){
+            modPersuasao.textContent = modCar + bonusProficiencia;
+        } else {
+            modPersuasao.textContent = modCar;
+        }
+        //Religião
+        if(religiao.checked){
+            modReligiao.textContent = modInt + bonusProficiencia;
+        } else {
+            modReligiao.textContent = modInt;
+        }
+        //Prestigitação
+        if(prestigitacao.checked){
+            modPrestigitacao.textContent = modDex + bonusProficiencia;
+        } else {
+            modPrestigitacao.textContent = modDex;
+        }
+        //Furtividade
+        if(furtividade.checked){
+            modFurtividade.textContent = modDex + bonusProficiencia;
+        } else {
+            modFurtividade.textContent = modDex;
+        }
+        //Sobrevivencia
+        if(sobrevivencia.checked){
+            modSobrevivencia.textContent = modSab + bonusProficiencia;
+        } else {
+            modSobrevivencia.textContent = modSab;
+        }
+    }
+
+    acrobacia.addEventListener("change", calcularProficiencias);
+    adestrarAnimais.addEventListener("change", calcularProficiencias);
+    arcana.addEventListener("change", calcularProficiencias);
+    atletismo.addEventListener("change", calcularProficiencias);
+    enganacao.addEventListener("change", calcularProficiencias);
+    historia.addEventListener("change", calcularProficiencias);
+    intuicao.addEventListener("change", calcularProficiencias);
+    intimidacao.addEventListener("change", calcularProficiencias);
+    investigacao.addEventListener("change", calcularProficiencias);
+    medicina.addEventListener("change", calcularProficiencias);
+    natureza.addEventListener("change", calcularProficiencias);
+    percepcao.addEventListener("change", calcularProficiencias);
+    atuacao.addEventListener("change", calcularProficiencias);
+    persuasao.addEventListener("change", calcularProficiencias);
+    religiao.addEventListener("change", calcularProficiencias);
+    prestigitacao.addEventListener("change", calcularProficiencias);
+    furtividade.addEventListener("change", calcularProficiencias);
+    sobrevivencia.addEventListener("change", calcularProficiencias);
+
+
+    checkFor.addEventListener("change", calcularSalvaguardas);
+    checkDex.addEventListener("change", calcularSalvaguardas);
+    checkConst.addEventListener("change", calcularSalvaguardas);
+    checkInt.addEventListener("change", calcularSalvaguardas);
+    checkSab.addEventListener("change", calcularSalvaguardas);
+    checkCar.addEventListener("change", calcularSalvaguardas);
+
+    calcularSalvaguardas();
+    calcularProficiencias()
+</script>
+
+
